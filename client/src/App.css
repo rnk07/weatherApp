@@ -1,0 +1,77 @@
+/* App container */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Page centering */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1e1e, #8fa0b3);
+
+}
+
+.container {
+  height: 300px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  padding: 24px;
+}
+
+
+/* Header */
+.weather-header h1 {
+  margin: 0;
+  font-size: 50px;
+  color: #4fc3f7;
+  letter-spacing: 1px;
+}
+
+
+
+.weather-body {
+  margin: auto;
+  text-align: center;
+}
+
+/* Location */
+.location {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Temperature row */
+.temp-container {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  justify-content: center;
+}
+
+
+/* Temperature value */
+.temperature {
+  font-size: 56px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Unit */
+.temp-unit {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+}
