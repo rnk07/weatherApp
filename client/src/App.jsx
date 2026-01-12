@@ -6,10 +6,9 @@ import './App.css'
 function App() {
 
   const [location, setLocation] = useState("")
-  const [resultLocale, setResultLocale] = useState("")
-  const [temp, setTemp] = useState(0)
-  const [province,setProvince] = useSate("")
-  const [country,setCountry] =useState("")
+
+  // Weather States
+  const [weather, setWeather] = useState(null)
 
 
   function handleUserInput(e) {
@@ -29,21 +28,18 @@ function App() {
       const response = await axios.get(`http://localhost:9000/weather/${location}`)
 
       console.log(response)
-      setTemp(response.data.temprature);
-      setProvince(response.data.state);
-      setCountry(response.data.country);
+      setWeather(response.data);
+      setLocation("");
 
     } catch (error) {
-
+      console.error("Failed to fetch weather", error);
     }
 
-
-    setResultLocale(location);
-    setLocation("")
 
   }
 
   return (
+
     <>
       <div className="container">
         <header className="weather-header">
@@ -70,33 +66,36 @@ function App() {
 
 
           </div>
-
-          <h2 className="location">{resultLocale}</h2>
-          <div className="location-details">
-            <h6>{province}</h6>
-            <h6>{country}</h6>
-          </div>
-
-          <div className='weather-details'>
-            <div className='left-side'>
-              <h4>Temp1:</h4>
-              <h4>Temp1:</h4>
-            </div>
-            <div className="temp-container">
-              <output className='temperature'>{temp}</output>
-              <small className='temp-unit'>°C</small>
-            </div>
-            <div className="right-sdie">
-              <h4>Temp1:</h4>
-              <h4>Temp1:</h4>
-            </div>
+          {weather && (
+            <>
+              <h2 className="location">{weather.city}</h2>
+              <div className="location-details">
+                <span className='state-country'>{weather.state}, {weather.country}</span>
+              </div>
 
 
-          </div>
+              <div className='weather-details'>
+                <div className='left-side'>
+                  <p>Feels Like: {weather.feelsLike}°C</p>
+                  <p>Condition: {weather.condition}</p>
+                </div>
+                <div className="temp-container">
+                  <output className='temperature'>{weather.temprature}</output>
+                  <small className='temp-unit'>°C</small>
+                </div>
+                <div className="right-sdie">
+                  <p>Wind: {weather.wind}</p>
+                  <p>Humidity: {weather.humidity}</p>
+                </div>
 
+
+              </div>
+            </>
+          )}
         </section>
       </div>
     </>
+
   )
 }
 
