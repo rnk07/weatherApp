@@ -31,6 +31,10 @@ router.get("/:city", async (req, res) => {
             state: data.location.region,
             country: data.location.country,
             temprature: data.current.temp_c,
+            feelsLike: data.current.feelslike_c,
+            condition: data.current.condition.text,
+            wind:data.current.wind_kph,
+            humidity: data.current.humidity
 
         }
 

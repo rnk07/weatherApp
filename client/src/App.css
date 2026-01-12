@@ -25,7 +25,7 @@ body {
   flex-direction: column;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.05);
-  
+
   backdrop-filter: blur(10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   padding: 24px;
@@ -45,15 +45,12 @@ body {
 .weather-body {
   margin: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Location */
-.location {
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.9);
-}
+
 
 /* Temperature row */
 .temp-container {
@@ -80,9 +77,10 @@ body {
 
 /* User Input Field */
 .user-location {
+  /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 50px;
   margin-bottom: 20px;
 }
 
@@ -96,6 +94,7 @@ body {
   outline: none;
   backdrop-filter: blur(6px);
   transition: all 0.3s ease;
+  flex: 1;
 }
 
 .get-user-input::placeholder {
@@ -119,7 +118,7 @@ body {
 /* Location Search Box */
 .search-box {
   display: flex;
-  gap: 10px;
+  gap: 50px;
 }
 
 .search-btn {
@@ -141,4 +140,48 @@ body {
 
 .search-btn:active {
   transform: scale(0.95);
+}
+
+/* Location */
+.location {
+  /* border: 2px solid; */
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+
+}
+
+/* Location - Extra details */
+
+.location-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+  width: 400x;
+  height: 15px;
+  color: rgb(201, 188, 188);
+
+}
+
+.state-country {
+  font-size: 12px;
+}
+
+.weather-details {
+  /* border: 2px solid black; */
+
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  text-align: left;
+  gap: 65px;
+
+}
+
+.weather-details p {
+  font-size: 15px;
+  color: rgb(230, 238, 237);
 }
