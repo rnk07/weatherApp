@@ -1,10 +1,14 @@
 import { useState } from 'react'
+import axios from 'axios'
+
 import './App.css'
 
 function App() {
 
   const [location, setLocation] = useState("")
   const [resultLocale, setResultLocale] = useState("")
+  const [temp, setTemp] = useState(0)
+
 
   function handleUserInput(e) {
     const userlocation = e.target.value;
@@ -13,12 +17,26 @@ function App() {
 
   }
 
-  function handleSearchAction() {
+  async function handleSearchAction() {
     console.log("clicked")
-    if(!location.trim()) return;
+    if (!location.trim()) return;
+
+
+    try {
+
+      const response = await axios.get(`http://localhost:9000/weather/${location }`)
+
+      console.log(response)
+      setTemp(response.data.temprature)
+
+    } catch (error) {
+
+    }
+
+
     setResultLocale(location);
     setLocation("")
-   
+
   }
 
   return (
@@ -49,7 +67,7 @@ function App() {
           </div>
 
           <div className="temp-container">
-            <output className='temperature'>0</output>
+            <output className='temperature'>{temp}</output>
             <small className='temp-unit'>°C</small>
           </div>
         </section>
