@@ -6,10 +6,9 @@ import './App.css'
 function App() {
 
   const [location, setLocation] = useState("")
-
-  // Weather States
   const [weather, setWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("")
 
 
   function handleUserInput(e) {
@@ -26,6 +25,8 @@ function App() {
 
     try {
       setIsLoading(true);
+      setError("");
+      setWeather(null)
 
       const response = await axios.get(`http://localhost:9000/weather/${location}`)
 
@@ -34,8 +35,15 @@ function App() {
       setLocation("");
 
     } catch (error) {
-      console.error("Failed to fetch weather", error);
-    }finally{
+      console.log("FULL ERROR:", error);
+      console.log("RESPONSE:", error.response);
+      console.log("DATA:", error.response?.data);
+      const message = error.response?.data?.message || "Something Went Wrong...";
+
+      setError(message)
+      setWeather(null)
+
+    } finally {
       setIsLoading(false);
     }
 
@@ -63,13 +71,15 @@ function App() {
               />
 
               <button className="search-btn" onClick={handleSearchAction}>
-                {isLoading ? "⏳" :"🔍"}
+                {isLoading ? "⏳" : "🔍"}
               </button>
             </div>
 
-        {isLoading  && (
-          <p className='loading-text'> Fethcing Weather...</p>
-        )}
+            {isLoading && (
+              <p className='loading-text'> Fethcing Weather...</p>
+            )}
+
+            {error && <p className="error">{error}</p>}
 
           </div>
           {weather && (

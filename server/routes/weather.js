@@ -24,6 +24,13 @@ router.get("/:city", async (req, res) => {
         const data = await response.json();
         console.log(data)
 
+        // Handle Invalid City
+        if(data.error){
+            return res.status(404).json({
+                message:data.error.message
+            })
+        }
+
         // Send back needed Data
 
         const result = {
