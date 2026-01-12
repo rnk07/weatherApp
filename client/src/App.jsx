@@ -3,6 +3,24 @@ import './App.css'
 
 function App() {
 
+  const [location, setLocation] = useState("")
+  const [resultLocale, setResultLocale] = useState("")
+
+  function handleUserInput(e) {
+    const userlocation = e.target.value;
+    setLocation(userlocation)
+    console.log(userlocation)
+
+  }
+
+  function handleSearchAction() {
+    console.log("clicked")
+    if(!location.trim()) return;
+    setResultLocale(location);
+    setLocation("")
+   
+  }
+
   return (
     <>
       <div className="container">
@@ -18,14 +36,16 @@ function App() {
                 type="text"
                 className="get-user-input"
                 placeholder="Enter city name"
+                value={location}
+                onChange={handleUserInput}
               />
 
-              <button className="search-btn">
+              <button className="search-btn" onClick={handleSearchAction}>
                 🔍
               </button>
             </div>
 
-            <h2 className="location">Toronto</h2>
+            <h2 className="location">{resultLocale}</h2>
           </div>
 
           <div className="temp-container">

@@ -116,6 +116,7 @@ body {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
 }
 
+/* Location Search Box */
 .search-box {
   display: flex;
   gap: 10px;
