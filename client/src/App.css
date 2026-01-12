@@ -185,3 +185,10 @@ body {
   font-size: 15px;
   color: rgb(230, 238, 237);
 }
+
+/* Loading Text */
+.loading-text {
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}

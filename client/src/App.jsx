@@ -8,7 +8,8 @@ function App() {
   const [location, setLocation] = useState("")
 
   // Weather States
-  const [weather, setWeather] = useState(null)
+  const [weather, setWeather] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   function handleUserInput(e) {
@@ -24,6 +25,7 @@ function App() {
 
 
     try {
+      setIsLoading(true);
 
       const response = await axios.get(`http://localhost:9000/weather/${location}`)
 
@@ -33,6 +35,8 @@ function App() {
 
     } catch (error) {
       console.error("Failed to fetch weather", error);
+    }finally{
+      setIsLoading(false);
     }
 
 
@@ -59,11 +63,13 @@ function App() {
               />
 
               <button className="search-btn" onClick={handleSearchAction}>
-                🔍
+                {isLoading ? "⏳" :"🔍"}
               </button>
             </div>
 
-
+        {isLoading  && (
+          <p className='loading-text'> Fethcing Weather...</p>
+        )}
 
           </div>
           {weather && (
