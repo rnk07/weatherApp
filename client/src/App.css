@@ -49,29 +49,95 @@ body {
 
 /* Location */
 .location {
-  font-size: 26px;
-  margin-bottom: 12px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Temperature row */
 .temp-container {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: baseline;
   justify-content: center;
+  margin-top: 10px;
 }
 
 
 /* Temperature value */
 .temperature {
-  font-size: 56px;
+  font-size: 64px;
   font-weight: 600;
   color: #ffffff;
 }
 
 /* Unit */
 .temp-unit {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* User Input Field */
+.user-location {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.get-user-input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.get-user-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.get-user-input:focus {
+  border-color: #4fc3f7;
+  box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.3);
+}
+
+.container {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+}
+
+.search-btn {
+  padding: 0 16px;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(79, 195, 247, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background: rgba(79, 195, 247, 0.35);
+  transform: translateY(-2px);
+}
+
+.search-btn:active {
+  transform: scale(0.95);
 }

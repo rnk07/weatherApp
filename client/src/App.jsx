@@ -11,9 +11,23 @@ function App() {
         </header>
 
         <section className="weather-body">
-          <h2 className="location">
-            Toronto
-          </h2>
+
+          <div className="user-location">
+            <div className="search-box">
+              <input
+                type="text"
+                className="get-user-input"
+                placeholder="Enter city name"
+              />
+
+              <button className="search-btn">
+                🔍
+              </button>
+            </div>
+
+            <h2 className="location">Toronto</h2>
+          </div>
+
           <div className="temp-container">
             <output className='temperature'>0</output>
             <small className='temp-unit'>°C</small>
