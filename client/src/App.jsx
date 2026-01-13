@@ -35,10 +35,16 @@ function App() {
       setLocation("");
 
     } catch (error) {
-      console.log("FULL ERROR:", error);
-      console.log("RESPONSE:", error.response);
-      console.log("DATA:", error.response?.data);
+      // console.log("FULL ERROR:", error);
+      // console.log("RESPONSE:", error.response);
+      // console.log("DATA:", error.response?.data);
       const message = error.response?.data?.message || "Something Went Wrong...";
+
+      console.error("❌ Weather fetch failed", {
+        city: location,
+        status: error.response?.status,
+        message
+      });
 
       setError(message)
       setWeather(null)
