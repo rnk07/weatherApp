@@ -26,6 +26,7 @@ router.get("/:city", async (req, res) => {
 
         // Handle Invalid City
         if(data.error){
+            console.warn("⚠️ Weather API error", data.error);
             return res.status(404).json({
                 message:data.error.message
             })
@@ -51,7 +52,7 @@ router.get("/:city", async (req, res) => {
 
     } catch (error) {
 
-        console.error(error);
+        // console.error(error);
         res.status(500).json({ error: "Server Side Error." })
 
     }
